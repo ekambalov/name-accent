@@ -32,21 +32,21 @@ function findAccent(a) {
     return accent;
 
 }
-
+//шукае апошнюю літару О
 function findO(word) {
     const oindex = word.lastIndexOf('о');
     const Oindex = word.lastIndexOf('О');
     if (oindex <= Oindex) return Oindex;
     return oindex;
 }
-
+//шукаге апошнюю літару Ё
 function findYo(word) {
     const yoIndex = word.lastIndexOf('ё');
     const YoIndex = word.lastIndexOf('Ё');
     if (yoIndex <= YoIndex) return YoIndex;
     return yoIndex;
 }
-
+//правярае на канчаткі 'ай', 'ан', 'ой', 'уй', 'эй'
 function checkEnding(word) {
     // Правяраем, што уведзенае значэнне з'яўляецца радком і мае дастатковую даўжыню
     if (typeof word !== 'string' || word.length < 2) {
@@ -67,7 +67,7 @@ function checkEnding(word) {
     // Калі ні адзін з канчаткаў не супадае
     return -1;
 }
-
+//правярае перадапошні галосны на 
 function findSpecialVowelPosition(word) {
     // Спіс галосных літар беларускага алфавіту
     const vowels = 'аеёіоуыэюяАЕЁІОУЫЭЮЯ';
@@ -131,7 +131,7 @@ function addAccent(word) {
     // Дадаем націск у пазначаную пазіцыю
     return word.slice(0, position + 1) + accent + word.slice(position + 1);
 }
-// фунцыя якая улічвае прабелы
+// фунцыя якая разбівае ўведзены радок на словы ставіць націскі і вяртае новы радок
 function processStringWithAccent(inputString) {
     // Разбіваем радок на масіў, выкарыстоўваючы як падзельнікі прабелы і рыскі, захоўваючы іх
     const parts = inputString.split(/([ -])/);
@@ -162,7 +162,7 @@ function isBelarusianText(input) {
     alert('Увядзіце карэктнае імя');
     return false;
 }
-
+//функцыя выводзіць вынік непасрэдна на вэб-старонку
 function updateResultDiv(newText) {
     // Знаходзім элемент з класам 'result'
     const resultDiv = document.querySelector('.result');
@@ -176,5 +176,5 @@ function updateResultDiv(newText) {
     }
 }
 
-// 5. Добавляем обработчик события на кнопку
+// Апрацоўка падзеі на кнопку
 checkBtn.addEventListener('click', btnClick);
