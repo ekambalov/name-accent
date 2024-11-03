@@ -1,0 +1,97 @@
+/* Галоўныя стылі для цела старонкі */
+body {
+    font-family: Arial, sans-serif;
+    /* Шрыфт для ўсёй старонкі */
+    background-color: #f0f0f0;
+    /* Светлы фон */
+    margin: 0;
+    /* Без адступаў */
+    padding: 20px;
+    /* Унутраны адступ */
+    display: flex;
+    /* Выкарыстоўваем flex для цэнтравання */
+    justify-content: center;
+    /* Цэнтраванне па гарызанталі */
+    align-items: center;
+    /* Цэнтраванне па вертыкалі */
+    height: 100vh;
+    /* Уся вышыня экрана */
+}
+
+/* Секцыя з асноўным зместам */
+.main {
+    background-color: #fff;
+    /* Белы фон для блока */
+    border-radius: 8px;
+    /* Круглыя куты */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Цень для глыбіні */
+    padding: 20px;
+    /* Унутраны адступ */
+    width: 300px;
+    /* Фіксаваная шырыня блока */
+    text-align: center;
+    /* Тэкст па цэнтры */
+}
+
+/* Загаловак */
+.title {
+    font-size: 24px;
+    /* Памер шрыфта */
+    margin-bottom: 20px;
+    /* Адступ знізу */
+    color: #333;
+    /* Тэкст колер */
+}
+
+/* Поле ўводу */
+.name {
+    width: 90%;
+    /* Шырыня 100% */
+    padding: 10px;
+    /* Унутраны адступ */
+    border: 1px solid #ccc;
+    /* Колер граніцы */
+    border-radius: 4px;
+    /* Круглыя куты */
+    margin-bottom: 10px;
+    /* Адступ знізу */
+    font-size: 16px;
+    /* Памер шрыфта */
+}
+
+/* Кнопка */
+.check {
+    background-color: #4CAF50;
+    /* Колер фону кнопкі */
+    color: white;
+    /* Колер тэксту кнопкі */
+    padding: 10px 15px;
+    /* Унутраны адступ кнопкі */
+    border: none;
+    /* Без граніцы */
+    border-radius: 4px;
+    /* Круглыя куты */
+    cursor: pointer;
+    /* Указальнік для курсора */
+    font-size: 16px;
+    /* Памер шрыфта */
+    transition: background-color 0.3s;
+    /* Плавны пераход колеру */
+}
+
+/* Ховер для кнопкі */
+.check:hover {
+    background-color: #45a049;
+    /* Цямнейшы колер пры навядзенні */
+}
+
+/* Блок вынікаў */
+.result {
+    margin-top: 20px;
+    /* Адступ зверху */
+    font-size: 18px;
+    /* Памер шрыфта */
+    color: #333;
+    /* Колер тэксту */
+}

@@ -1,13 +1,21 @@
 // 1. Находим элементы на странице
-const name = document.querySelector('.name'); // Инпут с классом "name"
+const inputData = document.querySelector('.name'); // Инпут с классом "name"
 const checkBtn = document.querySelector('.check'); // Кнопка с классом "check"
 
-// 2. Создаем функцию, которая сработает при нажатии на кнопку
-function findAccent() {
-    const a = name.value;
+// Фугкцыя якая спрацоўвае пры націску: 
+function btnClick() {
+    const names = (inputData.value + '');
+    let result = processStringWithAccent(names);
+    updateResultDiv(result);
+    console.log(result);
+}
+
+// 2. Алгарытм пошуку націска
+function findAccent(a) {
+
     let accent = 0;
     if (a == '') return;
-    isBelarusianText(a);
+    if (!isBelarusianText(a)) return -1;
     if (findO(a) != -1) {
         accent = findO(a);
     } else if (findYo(a) != -1) {
@@ -108,7 +116,38 @@ function findSpecialVowelPosition(word) {
     }
 }
 
+// функцыя дадае націск у слова
+function addAccent(word) {
+    let position = findAccent(word);
+    if (position == -1) return;
+    // Правяраем, ці пазіцыя знаходзіцца ў межах даўжыні слова
+    if (position < 0 || position >= word.length) {
+        return "Памылка: пазіцыя па-за межамі слова";
+    }
 
+    // Спецсімвал націску
+    const accent = "\u0301";
+
+    // Дадаем націск у пазначаную пазіцыю
+    return word.slice(0, position + 1) + accent + word.slice(position + 1);
+}
+// фунцыя якая улічвае прабелы
+function processStringWithAccent(inputString) {
+    // Разбіваем радок на масіў, выкарыстоўваючы як падзельнікі прабелы і рыскі, захоўваючы іх
+    const parts = inputString.split(/([ -])/);
+
+    // Пройдземся па масіве і прымяняем addAccent да кожнага элемента, які не з’яўляецца прабелам ці рыскай
+    const accentedParts = parts.map(part => {
+        if (part === ' ' || part === '-') {
+            return part; // Пакідаем прабелы і рыскі як ёсць
+        } else {
+            return addAccent(part); // Дадаем націск да слова
+        }
+    });
+
+    // Аб'ядноўваем масіў назад у радок
+    return accentedParts.join('');
+}
 // функцыя праверкі тыпу данных
 function isBelarusianText(input) {
     // 1. Проверяем, что input является строкой
@@ -123,5 +162,19 @@ function isBelarusianText(input) {
     alert('Увядзіце карэктнае імя');
     return false;
 }
+
+function updateResultDiv(newText) {
+    // Знаходзім элемент з класам 'result'
+    const resultDiv = document.querySelector('.result');
+
+    // Правяраем, ці элемент існуе
+    if (resultDiv) {
+        // Абнаўляем тэкст элемента
+        resultDiv.textContent = newText;
+    } else {
+        console.error("Элемент з класам 'result' не знойдзены на старонцы.");
+    }
+}
+
 // 5. Добавляем обработчик события на кнопку
-checkBtn.addEventListener('click', showAlert);
+checkBtn.addEventListener('click', btnClick);
